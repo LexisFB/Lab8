@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+
 import React from 'react'; // Importing Component Nav 
 import Container from 'react-bootstrap/Container'; // Importing Container component from bootstrap 
 import Nav from 'react-bootstrap/Nav'; // Importing Nav componenet from bootstrap
@@ -8,6 +8,7 @@ import {    // Importing Component Route, Routes and BrowserRouter from react li
     Route,
     Routes
   } from "react-router-dom";
+import { Edit } from './edit';
 
 import { Content } from './content'; // Importing Component 
 import { Create } from './create'; // Importing Component 
@@ -35,6 +36,7 @@ export class Cnav extends React.Component {
                 <Route path='/' element={<Content></Content>}></Route>
                 <Route path='/read' element={<Read></Read>}></Route>
                 <Route path='/create' element={<Create></Create>}></Route>
+                <Route path='/edit/:id' element={<Edit></Edit>}></Route>
                
             </Routes>
 

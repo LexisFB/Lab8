@@ -20,6 +20,7 @@ const cors = require('cors');
 // getting-started.js
 const mongoose = require('mongoose');
 
+
 main().catch(err => console.log(err));
 
 //connection to the database
@@ -57,11 +58,16 @@ app.post('/api/books', (req, res) =>{
     res.send('Books added');
 })
 
-
-app.post('/name', (req, res) =>{
-    console.log(req.body);
-    res.send ('Hello ' + req.body.fName + ' ' + req.body.lName)
+//listening for a put request for updating books
+app.put('/api/book/:id',(req,res) =>{
+    console.log("update "+ req.params.id);
+    
+    bookModel.findByIdAndUpdate(req.params.id, req.body, {new: true},(error,data)=>{
+        res.send(data);
+    });
 })
+
+
 
 app.get('/', (req, res) => { //req reserver word for request, res stands for respond 
   res.send('Hello World!')  // when web client send a get request the server will resport with this hello world. 
@@ -124,18 +130,7 @@ app.get('/api/book/:id',(req,res) => {
 
 })
 
-app.get('/test', (req, res) => {
-    res.sendFile(__dirname + '/index.html' )
-})
 
-app.get('/name', (req, res) => {
-    res.send(`Hello  ${req.query.fName + " " +req.query.lName }`)
-})
-
-app.get('/hello/:name', (req, res) =>{
-    console.log(req.params.name);
-    res.send(`Hello ${req.params.name}`)
-})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

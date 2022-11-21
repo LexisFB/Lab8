@@ -1,6 +1,9 @@
-import { render } from '@testing-library/react';
+
 import React from 'react';
 import Card from 'react-bootstrap/Card'; //Importing card elements from react
+
+import { Link } from 'react-router-dom';
+
 
 
 export class BookItem extends React.Component {
@@ -16,13 +19,17 @@ export class BookItem extends React.Component {
                     <Card.Text>
                     {this.props.book.author}
                     </Card.Text>
-                     
+                    <Link to={"/edit/"+this.props.book._id} className="btn btn-primary my-3">Edit</Link> {/* Adding the button to Edit Item and linking to api/book/edit/: ading the id of he item*/ }
                 </Card.Body>
+                
                 </Card>
             </div>
           );
 
     }
+
+
+   
   
 }
 

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+
 import React from 'react';
 import { Books } from './books';
 import CardGroup from 'react-bootstrap/CardGroup';
@@ -29,7 +29,7 @@ export class Read extends React.Component {
 
                 <h1> Read Component</h1>
                 <CardGroup>
-                    <Books books={this.state.books}> </Books>  {/* Send the object from the parent component to the child component. */}
+                    <Books books={this.state.books} > </Books>  {/* Send the object from the parent component to the child component. */}
                 </CardGroup>
 
             </div>
